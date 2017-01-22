@@ -5,4 +5,4 @@ curl https://repogen.simplylinux.ch/txt/xenial/sources_f2704a9be47d8b45868631d19
 
 # update 
 apt-get -y update
-apt-get -y upgrade
+
