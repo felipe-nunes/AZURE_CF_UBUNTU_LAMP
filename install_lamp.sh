@@ -7,5 +7,6 @@ curl https://repogen.simplylinux.ch/txt/xenial/sources_f2704a9be47d8b45868631d19
 apt-get -y update
 
 # install the LAMP stack
-apt-get -y install git curl 
+apt-get -y install git curl
+apt-get -y install apache2 
 
