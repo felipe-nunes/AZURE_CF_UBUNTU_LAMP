@@ -7,6 +7,12 @@ curl https://repogen.simplylinux.ch/txt/xenial/sources_f2704a9be47d8b45868631d19
 apt-get -y update
 
 # install the LAMP stack
-apt-get -y install git curl
+apt-get -y install git curl 
+
 apt-get -y install apache2 
+# Apache Test -> http://vm/localhost
+
+apt-get -y install php7.0 libapache2-mod-php7.0 
+# php --ini
+sudo bash -c 'echo "<?php phpinfo(); ?>" > /var/www/html/infophp.php'
 
