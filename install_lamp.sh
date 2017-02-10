@@ -18,7 +18,7 @@ sudo bash -c 'echo "<?php phpinfo(); ?>" > /var/www/html/infophp.php'
 
 apt-get -y install php7.0-common php7.0-curl php7.0-mysql php7.0-json php7.0-cgi php7.0-cli php7.0-odbc php7.0-sqlite3 php7.0-mcrypt php7.0-xml php7.0-soap php7.0-xmlrpc php7.0-gd php7.0-mbstring
 
-apt-get -y install mysql-server
+
 
 
 
