@@ -6,6 +6,13 @@ curl https://repogen.simplylinux.ch/txt/xenial/sources_f2704a9be47d8b45868631d19
 # update 
 apt-get -y update
 
+# set up a silent install of MySQL
+dbpass=$1
+
+export DEBIAN_FRONTEND=noninteractive
+echo mysql-server mysql-server/root_password password $dbpass | sudo debconf-set-selections
+echo mysql-server mysql-server/root_password_again password $dbpass | sudo debconf-set-selections
+
 # install the LAMP stack
 apt-get -y install git curl 
 
@@ -18,6 +25,7 @@ sudo bash -c 'echo "<?php phpinfo(); ?>" > /var/www/html/infophp.php'
 
 apt-get -y install php7.0-common php7.0-curl php7.0-mysql php7.0-json php7.0-cgi php7.0-cli php7.0-odbc php7.0-sqlite3 php7.0-mcrypt php7.0-xml php7.0-soap php7.0-xmlrpc php7.0-gd php7.0-mbstring
 
+apt-get -y install mysql-server mysql-utilities mysql-common mysql-client libmysqlclient20
 
 
 
