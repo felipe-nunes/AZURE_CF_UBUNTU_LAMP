@@ -8,6 +8,7 @@ apt-get -y update
 
 # set up a silent install of MySQL
 dbpass=$1
+pha=$2
 
 export DEBIAN_FRONTEND=noninteractive
 echo mysql-server mysql-server/root_password password $dbpass | sudo debconf-set-selections
@@ -30,9 +31,9 @@ apt-get -y install mysql-server mysql-utilities mysql-common mysql-client libmys
 export DEBIAN_FRONTEND=noninteractive
 
 echo phpmyadmin phpmyadmin/dbconfig-install boolean true | sudo debconf-set-selections
-echo phpmyadmin phpmyadmin/app-password-confirm password $dbpass | sudo debconf-set-selections
-echo phpmyadmin phpmyadmin/mysql/admin-pass password $dbpass | sudo debconf-set-selections
-echo phpmyadmin phpmyadmin/mysql/app-pass password $dbpass | sudo debconf-set-selections
+echo phpmyadmin phpmyadmin/app-password-confirm password $pha | sudo debconf-set-selections
+echo phpmyadmin phpmyadmin/mysql/admin-pass password $pha | sudo debconf-set-selections
+echo phpmyadmin phpmyadmin/mysql/app-pass password $pha | sudo debconf-set-selections
 echo phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2 | sudo debconf-set-selections
 
 apt-get -y -q install phpmyadmin
@@ -40,4 +41,3 @@ apt-get -y -q install phpmyadmin
 sudo cp /etc/phpmyadmin/apache.conf /etc/apache2/conf-available/phpmyadmin.conf
 sudo a2enconf phpmyadmin
 sudo service apache2 restart
-
