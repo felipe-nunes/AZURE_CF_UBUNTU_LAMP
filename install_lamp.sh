@@ -7,7 +7,7 @@ curl https://repogen.simplylinux.ch/txt/xenial/sources_f2704a9be47d8b45868631d19
 apt-get -y update
 
 # set up a silent install of MySQL
-dbpass=$1
+dbpass=rootpw
 
 export DEBIAN_FRONTEND=noninteractive
 echo mysql-server mysql-server/root_password password $dbpass | sudo debconf-set-selections
