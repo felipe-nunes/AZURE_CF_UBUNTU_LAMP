@@ -27,6 +27,17 @@ apt-get -y install php7.0-common php7.0-curl php7.0-mysql php7.0-json php7.0-cgi
 
 apt-get -y install mysql-server mysql-utilities mysql-common mysql-client libmysqlclient20
 
+export DEBIAN_FRONTEND=noninteractive
+apt-get -q -y phpmyadmin
 
+echo phpmyadmin phpmyadmin/dbconfig-install boolean true | sudo debconf-set-selections
+echo phpmyadmin phpmyadmin/app-password-confirm password $dbpass | sudo debconf-set-selections
+echo phpmyadmin phpmyadmin/mysql/admin-pass password $dbpass | sudo debconf-set-selections
+echo phpmyadmin phpmyadmin/mysql/app-pass password $dbpass | sudo debconf-set-selections
+echo phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2 | sudo debconf-set-selections
+
+sudo cp /etc/phpmyadmin/apache.conf /etc/apache2/conf-available/phpmyadmin.conf
+sudo a2enconf phpmyadmin
+sudo service apache2 restart
 
 
